@@ -17,16 +17,16 @@ import br.com.ordensservico.aberturaordensservico.model.Equipamento;
 import br.com.ordensservico.aberturaordensservico.service.EquipamentoService;
 import jakarta.validation.Valid;
 
-@RestController 
+@RestController
 @RequestMapping("/equipamentos")
 public class EquipamentoController {
 
     private EquipamentoService equipamentoService;
 
-    public EquipamentoController (EquipamentoService equipamentoService){
+    public EquipamentoController(EquipamentoService equipamentoService) {
         this.equipamentoService = equipamentoService;
     }
-    
+
     @PostMapping
     public ResponseEntity<Equipamento> cadastrar(
             @Valid @RequestBody Equipamento equipamento) {
@@ -37,18 +37,21 @@ public class EquipamentoController {
                 .status(HttpStatus.CREATED)
                 .body(novoEquipamento);
     }
+
     @GetMapping
     public ResponseEntity<List<Equipamento>> listar() {
 
         return ResponseEntity.ok(equipamentoService.listar());
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Equipamento> buscarPorId(
-        @PathVariable int id) {
+            @PathVariable int id) {
         return equipamentoService.buscarPorId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
     @PutMapping("/{id}")
     public ResponseEntity<Equipamento> atualizar(
             @PathVariable int id,
@@ -70,4 +73,3 @@ public class EquipamentoController {
         return ResponseEntity.notFound().build();
     }
 }
-

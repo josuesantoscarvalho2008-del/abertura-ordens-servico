@@ -17,15 +17,15 @@ public class Equipamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    
-    @NotBlank (message = "O nome do equipamento é obrigatório")
+
+    @NotBlank(message = "O nome do equipamento é obrigatório")
     private String nome;
-    @NotBlank (message = "O número do patrimônio é obrigatório")
+    @NotBlank(message = "O número do patrimônio é obrigatório")
     private String numeroPatrimonio;
 
     @ManyToOne
     @JoinColumn(name = "setor_id", nullable = false)
-    @NotNull (message = "O setor do equipamento é obrigatório")
+    @NotNull(message = "O setor do equipamento é obrigatório")
     private Setor setor;
 
     public int getId() {
@@ -47,10 +47,12 @@ public class Equipamento {
     public void setNumeroPatrimonio(String numeroPatrimonio) {
         this.numeroPatrimonio = numeroPatrimonio;
     }
+
     public Setor getSetor() {
         return setor;
     }
-    public void setSetor(Setor setor){
+
+    public void setSetor(Setor setor) {
         this.setor = setor;
     }
 
