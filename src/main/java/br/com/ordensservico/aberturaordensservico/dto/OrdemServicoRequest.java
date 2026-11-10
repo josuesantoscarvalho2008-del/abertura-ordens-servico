@@ -1,0 +1,27 @@
+package br.com.ordensservico.aberturaordensservico.dto;
+
+
+public class OrdemServicoRequest {
+
+    @NotBlank(message = "A descrição da ordem de serviço é obrigatória.")
+    private String descricao;
+
+    @NotNull(message = "O ID do equipamento é obrigatório.")
+    private int equipamentoId;
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public int getEquipamentoId() {
+        return equipamentoId;
+    }
+
+    public void setEquipamentoId(int equipamentoId) {
+        this.equipamentoId = equipamentoId;
+    }
+}
