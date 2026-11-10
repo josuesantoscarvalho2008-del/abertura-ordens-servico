@@ -2,6 +2,13 @@ package br.com.ordensservico.aberturaordensservico.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.time.LocalDateTime;
+import org.springframework.stereotype.Service;
+import br.com.ordensservico.aberturaordensservico.dto.OrdemServicoRequest;
+import br.com.ordensservico.aberturaordensservico.model.Equipamento;
+import br.com.ordensservico.aberturaordensservico.model.OrdemServico;
+import br.com.ordensservico.aberturaordensservico.repository.EquipamentoRepository;
+import br.com.ordensservico.aberturaordensservico.repository.OrdemServicoRepository
 
 
 @Service
