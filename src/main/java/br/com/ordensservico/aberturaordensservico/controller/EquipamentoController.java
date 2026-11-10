@@ -1,6 +1,7 @@
 package br.com.ordensservico.aberturaordensservico.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.ordensservico.aberturaordensservico.dto.EquipamentoRequest;
 import br.com.ordensservico.aberturaordensservico.model.Equipamento;
 import br.com.ordensservico.aberturaordensservico.service.EquipamentoService;
 import jakarta.validation.Valid;
@@ -29,13 +31,13 @@ public class EquipamentoController {
 
     @PostMapping
     public ResponseEntity<Equipamento> cadastrar(
-            @Valid @RequestBody Equipamento equipamento) {
+            @Valid @RequestBody EquipamentoRequest dadosEquipamento) {
 
-        Equipamento novoEquipamento = equipamentoService.cadastrar(equipamento);
+        Optional<Equipamento> novoEquipamento = equipamentoService.cadastrar(dadosEquipamento);
 
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(novoEquipamento);
+        return novoEquipamento
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
     }
 
     @GetMapping
@@ -55,9 +57,9 @@ public class EquipamentoController {
     @PutMapping("/{id}")
     public ResponseEntity<Equipamento> atualizar(
             @PathVariable int id,
-            @Valid @RequestBody Equipamento equipamentoAtualizado) {
+            @Valid @RequestBody EquipamentoRequest dadosEquipamento) {
 
-        return equipamentoService.atualizar(id, equipamentoAtualizado)
+        return equipamentoService.atualizar(id, dadosEquipamento)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
