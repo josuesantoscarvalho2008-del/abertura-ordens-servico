@@ -35,9 +35,9 @@ public class EquipamentoController {
 
         Optional<Equipamento> novoEquipamento = equipamentoService.cadastrar(dadosEquipamento);
 
-        return novoEquipamento
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
+        return ResponseEntity
+        .status(HttpStatus.CREATED)
+        .body(novoEquipamento.get());
     }
 
     @GetMapping

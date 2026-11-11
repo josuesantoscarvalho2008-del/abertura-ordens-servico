@@ -8,7 +8,7 @@ import br.com.ordensservico.aberturaordensservico.dto.OrdemServicoRequest;
 import br.com.ordensservico.aberturaordensservico.model.Equipamento;
 import br.com.ordensservico.aberturaordensservico.model.OrdemServico;
 import br.com.ordensservico.aberturaordensservico.repository.EquipamentoRepository;
-import br.com.ordensservico.aberturaordensservico.repository.OrdemServicoRepository
+import br.com.ordensservico.aberturaordensservico.repository.OrdemServicoRepository; 
 
 
 @Service

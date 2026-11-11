@@ -43,14 +43,6 @@ public class OrdemServico {
         this.dataAbertura = dataAbertura;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public Equipamento getEquipamento() {
         return equipamento;
     }
@@ -63,10 +55,9 @@ public class OrdemServico {
 
     }
 
-    public OrdemServico(String descricao, LocalDateTime dataAbertura, String status, Equipamento equipamento) {
+    public OrdemServico(String descricao, LocalDateTime dataAbertura, Equipamento equipamento) {
         this.descricao = descricao;
         this.dataAbertura = dataAbertura;
-        this.status = status;
         this.equipamento = equipamento;
     }
 }

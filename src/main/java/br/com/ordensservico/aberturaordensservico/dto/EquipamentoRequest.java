@@ -6,15 +6,13 @@ import jakarta.validation.constraints.Size;
 
 public class EquipamentoRequest {
     @NotBlank(message = "O nome do equipamento é obrigatório.")
-    @Size(max = 100, message = "O nome do equipamento deve ter no máximo 100 caracteres.")
     private String nome;
 
     @NotBlank(message = "O número do patrimônio é obrigatório.")
-    @Size(max = 50, message = "O número do patrimônio deve ter no máximo 50 caracteres.")
     private String numeroPatrimonio;
 
-    @NotNull (message = "O ID do setor é obrigatório.")
-    private int setorId;
+    @NotNull(message = "O ID do setor é obrigatório.")
+    private Integer setorId;
 
     public String getNome() {
         return nome;
@@ -32,14 +30,20 @@ public class EquipamentoRequest {
         this.numeroPatrimonio = numeroPatrimonio;
     }
 
-    public int getSetorId() {
+    public Integer getSetorId() {
         return setorId;
     }
 
-    public void setSetorId(int setorId) {
+    public void setSetorId(Integer setorId) {
         this.setorId = setorId;
     }
 
     public EquipamentoRequest() {
+    }
+
+    public EquipamentoRequest(String nome, String numeroPatrimonio, Integer setorId) {
+        this.nome = nome;
+        this.numeroPatrimonio = numeroPatrimonio;
+        this.setorId = setorId;
     }
 }
